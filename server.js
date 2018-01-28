@@ -15,34 +15,45 @@ app.get("/", (req, res) => {
     const postsJson = JSON.parse(fileData);
     res.render("index", {
       title: "Louis Profile",
+      bg:'img/home-bg.jpg',
+      heroTitle:'A modern Website built in Node',
       posts: postsJson
     });
   };
   fs.readFile(filePath, callbackFunction);
 });
 
+app.get('/post', (req, res) => {
+  res.render('post', {
+    big:'img/post-bg.jpg',
+    heroTitle:'yes'
+  })
+})
 
 app.get('/my-cv', (req, res) => {
   res.render('my-cv', {
-    title:'My CV'
+    title:'My CV',
+    bg:'img/contact-bg.jpg',
+    heroTitle:'Here is my CV'
   });
 })
 
 app.get('/admin', (req, res) => {
   res.render('admin', {
-    title: 'Admin'
+    title: 'Admin',
+    bg:'img/about-bg.jpg',
+    heroTitle:'Admin panel'
   });
 })
 
 app.get('/contact', (req, res) => {
   res.render('contact', {
-    title: 'Get in Touch'
+    title: 'Get in Touch',
+    bg:'img/home-bg.jpg',
+    heroTitle:'A modern Website built in Node'  
   });
 })
 
-app.get('/posts/:postid', (req, res) => {
-  res.send('yes')
-})
 
 // what does this line mean: process.env.PORT || 3000
 app.listen(process.env.PORT || 3000, function() {
